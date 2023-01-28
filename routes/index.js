@@ -17,7 +17,7 @@ router.get('/about', function(req, res, next) {
 });
 
 /* GET Products page. */
-router.get('/products', function(req, res, next) {
+router.get('/product', function(req, res, next) {
   res.render('products', { title: 'Products'});
 });
 
