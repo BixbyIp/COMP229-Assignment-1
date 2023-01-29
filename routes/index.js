@@ -17,12 +17,12 @@ router.get('/about', function(req, res, next) {
 });
 
 /* GET Products page. */
-router.get('/products, function(req, res, next) {
+router.get('/product, function(req, res, next) {
   res.render('product', { title: 'Products'});
 });
 
 /* GET Services page. */
-router.get('/services', function(req, res, next) {
+router.get('/service', function(req, res, next) {
   res.render('service', { title: 'Services'});
 });
 
