@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'comp229-assignment-1'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_695322DD202D436CA4A5F130C9CAEF9D }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_93CDEE1AEB3C4E489250071B5D76B978 }}
           package: .
