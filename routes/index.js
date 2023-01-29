@@ -16,14 +16,14 @@ router.get('/about', function(req, res, next) {
   res.render('about', { title: 'About'});
 });
 
-/* GET Products page. */
-router.get('/product, function(req, res, next) {
-  res.render('product', { title: 'Products'});
+/* GET Projects page. */
+router.get('/projects', function(req, res, next) {
+  res.render('projects', { title: 'Products'});
 });
 
 /* GET Services page. */
-router.get('/service', function(req, res, next) {
-  res.render('service', { title: 'Services'});
+router.get('/services', function(req, res, next) {
+  res.render('services', { title: 'Services'});
 });
 
 /* GET Contact Us page. */
