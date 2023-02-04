@@ -1,51 +1,19 @@
 <!-- Main Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="/"><img src="./Assets/images/bebo.png" alt="Logo" width="38" height="38" class="d-inline-block align-text-top"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto">
+<div class="container py-4">
 
-        <% if (title == "Home"){ %>
-        <li class="nav-item active">
-        <% } else  { %>
-        <li class="nav-item">
-        <% } %>
-          <a class="nav-link" href="/home"><i class="fas fa-lg fa-laptop-house"></i> Home </a>
-        </li>
-
-        <% if (title == "About") { %>
-        <li class="nav-item active">
-        <% } else  { %>
-        <li class="nav-item">
-        <% } %>
-          <a class="nav-link" href="/about"><i class="fas fa-info-circle"></i> About </a>
-        </li>
-
-        <% if (title == "Products") { %>
-        <li class="nav-item active">
-        <% } else  { %>
-        <li class="nav-item">
-        <% } %>
-          <a class="nav-link" href="/product"><i class="fab fa-elementor"></i> Products </a>
-        </li>
-
-        <% if (title == "Services") { %>
-        <li class="nav-item active">
-        <% } else  { %>
-        <li class="nav-item">
-        <% } %>
-          <a class="nav-link" href="/service"><i class="fas fa-cogs"></i> Services </a>
-        </li>
-
-        <% if (title == "Contact") { %>
-        <li class="nav-item active">
-        <% } else  { %>
-        <li class="nav-item">
-        <% } %>
-          <a class="nav-link" href="/contact"><i class="fas fa-mobile-alt"></i> Contact </a>
-        </li>
+  <main>
+    <div class="container">
+      <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+          <img src="/image/computer_logo.png" alt="logo" width="50" height="50">
+        </a>
+        <ul class="nav nav-pills fas fa-bars nav justify-content-end">
+          <li class="nav-item"><a href="./" class="nav-link active" aria-current="page">Home</a></li>
+          <li class="nav-item"><a href="/about" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="/projects" class="nav-link">Projects</a></li>
+          <li class="nav-item"><a href="/services" class="nav-link">Services</a></li>
+          <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
+        </ul>
+      </header>
     </div>
-  </nav>
+</div>

@@ -1,13 +1,13 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
+/* GET index page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Home'});
 });
 
 /* GET home page. */
-router.get('/home', function(req, res, next) {
+router.get('/', function(req, res, next) {
   res.render('index', { title: 'Home'});
 });
 
@@ -18,7 +18,7 @@ router.get('/about', function(req, res, next) {
 
 /* GET Projects page. */
 router.get('/projects', function(req, res, next) {
-  res.render('projects', { title: 'Products'});
+  res.render('projects', { title: 'Projects'});
 });
 
 /* GET Services page. */
