@@ -1,37 +1,11 @@
 /* custom css goes here */
-.bg-cover {
-    background-attachment: static;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.highlight-word {
-    position: relative;
-    z-index: 0;
-  /* prevent the highlight from breaking since it is horizontal   */
-    white-space: nowrap;
+  .bg-cover {
+      background-attachment: static;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
   }
-
-  .highlight-word:before {
-      content: '';
-      background: url(https://cdn2.hubspot.net/hubfs/1951809/text-highlight.png?t=1542708765973) no-repeat center center;
-      background-size: 100% auto;
-      width: 108%;
-      height: 100%;
-      display: block;
-      position: absolute;
-      z-index: -1;
-      transform: translate(-3%,0);
-  }
-
-  .jumbotron {
-    position:relative;
-    overflow:hidden;
-    background: url(image/nature_img_1.jpg) fixed center no-repeat;
-    background-size: cover;
-  }
-  
+    
   .jumbotron .container {
     position:relative;
     z-index:2;
@@ -51,11 +25,4 @@
     width:100%;
     height:100%;
     opacity:0.5;
-  }
-  
-  img.blur {
-      -webkit-filter: blur(4px);
-      filter: blur(4px);
-    filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='4');
-  
   }
