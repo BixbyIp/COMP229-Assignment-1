@@ -1,3 +1,13 @@
+/**
+ * This will be the custom java script for portfolio web site
+ * 
+ * @author bixby
+ * @studentID 301269672
+ * @date Wednesday, 08 February 2022 @ 0800
+ * @file app.js
+ *
+ */
+
 // IIFE -- Immediately Invoked Function Expression
 (function(){
 
@@ -8,10 +18,7 @@
 
     window.addEventListener("load", Start);
 
+    function formSubmitted() {
+        location.href="/users"
+    }
 })();
-var activeNavItem = $('.nav-item');
-
-activeNavItem.click(function(){
-  activeNavItem.removeClass('active');
-  $(this).addClass('active');  
-});
