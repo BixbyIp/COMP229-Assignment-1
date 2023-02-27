@@ -1,47 +1,49 @@
-// installed 3rd party packages
-let createError = require('http-errors');
-let express = require('express');
-let path = require('path');
-let cookieParser = require('cookie-parser');
-let logger = require('morgan');
+//define routing using methods of the Express app object that correspond to HTTP methods.>
 
-let session = require('express-session')
-let passport = require('passport')
-let passportLocal = require('passport-local')
-let localStrategy = passportLocal.Strategy
-let flash = require('connect-flash')
+const express = require('express')
+const app = express()
+const path = require('path')
+
+const session = require('express-session')
+const passport = require('passport')
+const passportLocal = require('passport-local')
+const localStrategy = passportLocal.Strategy
+const flash = require('connect-flash')
 
 
 // database setup
-let mongoose = require('mongoose');
-let DB = require('./db');
+const mongoose = require('mongoose');
+const DB = require('./db');
 
 //point mongoose to the DB URI
 mongoose.connect(DB.URI,{useNewUrlParser: true,useUnifiedTopology: true});
 
-let mongoDB = mongoose.connection;
+const mongoDB = mongoose.connection;
 mongoDB.on('error',console.error.bind(console,'Connection Error:'));
-mongoDB.once('open',()=>{
-  console.log('Connected to MongoDB...');
+mongoDB.once('open',()=> {console.log('Connected to MongoDB...');
 });
 
+const indexRouter = require('./routes/index')
+const usersRouter = require('./routes/users')
+const contactsRouter = require('../routes/contact')
 
-let indexRouter = require('../routes/index');
-let usersRouter = require('../routes/users');
-let contactsRouter = require('../routes/contact')
+app.set('views', path.join(__dirname, 'views'))
+app.set('view engine', 'ejs')
 
-let app = express();
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
 
-// view engine setup
-app.set('views', path.join(__dirname, '../views'));
-app.set('view engine', 'ejs'); // express -e
+app.use('/css', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/css')))
+app.use('/js', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/js')))
+app.use('/js', express.static(path.join(__dirname, 'node_modules/bootstrap/js/dist')))
+app.use('/js', express.static(path.join(__dirname, 'node_modules/jquery/dist')))
+app.use('/image', express.static(path.join(__dirname, 'public/assets/images')))
+app.use('/document', express.static(path.join(__dirname, 'public/assets/docs')))
 
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, '../../public')));
-app.use(express.static(path.join(__dirname, '../../node_modules')));
+//defines routes and mounts the router module on a path in the main app.
+app.use('/', indexRouter)
+app.use('/users', usersRouter)
+app.use('/contact-list',contactsRouter)
 
 //setup express session
 app.use(session({
@@ -70,9 +72,10 @@ passport.use(User.createStrategy())
 passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/contact-list',contactsRouter)
+//user express built-in middleware express.static to serve static files, 
+//such as images, CSS, JavaScript, etc.
+app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'node_modules')))
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -90,10 +93,4 @@ app.use(function(err, req, res, next) {
   res.render('error',{ title: 'Error' });
 });
 
-module.exports = app;
-
-// handle POST data
-var bodyParser = require('body-parser');
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
-app.use(bodyParser.urlencoded({ extended: true }));
+module.exports = app
