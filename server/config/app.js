@@ -23,22 +23,22 @@ mongoDB.on('error',console.error.bind(console,'Connection Error:'));
 mongoDB.once('open',()=> {console.log('Connected to MongoDB...');
 });
 
-const indexRouter = require('./routes/index')
-const usersRouter = require('./routes/users')
+const indexRouter = require('../routes/index')
+const usersRouter = require('../routes/users')
 const contactsRouter = require('../routes/contact')
 
-app.set('views', path.join(__dirname, 'views'))
+app.set('views', path.join(__dirname, '../views'))
 app.set('view engine', 'ejs')
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
-app.use('/css', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/css')))
-app.use('/js', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/js')))
-app.use('/js', express.static(path.join(__dirname, 'node_modules/bootstrap/js/dist')))
-app.use('/js', express.static(path.join(__dirname, 'node_modules/jquery/dist')))
-app.use('/image', express.static(path.join(__dirname, 'public/assets/images')))
-app.use('/document', express.static(path.join(__dirname, 'public/assets/docs')))
+app.use('/css', express.static(path.join(__dirname, '../../node_modules/bootstrap/dist/css')))
+app.use('/js', express.static(path.join(__dirname, '../../node_modules/bootstrap/dist/js')))
+app.use('/js', express.static(path.join(__dirname, '../../node_modules/bootstrap/js/dist')))
+app.use('/js', express.static(path.join(__dirname, '../../node_modules/jquery/dist')))
+app.use('/image', express.static(path.join(__dirname, '../../public/assets/images')))
+app.use('/document', express.static(path.join(__dirname, '../../public/assets/docs')))
 
 //defines routes and mounts the router module on a path in the main app.
 app.use('/', indexRouter)
@@ -76,21 +76,5 @@ passport.deserializeUser(User.deserializeUser())
 //such as images, CSS, JavaScript, etc.
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.static(path.join(__dirname, 'node_modules')))
-
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
-
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error',{ title: 'Error' });
-});
 
 module.exports = app
