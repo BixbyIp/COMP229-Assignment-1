@@ -1,5 +1,5 @@
 var express = require('express')
-var app = require('./app')
+var app = require('./server/config/app')
 var http = require('http')
 
 var port = normalisePort(process.env.PORT || '8080')
